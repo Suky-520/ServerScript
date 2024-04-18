@@ -1,0 +1,1 @@
+go test -run Test_all -cpuprofile cpu.prof

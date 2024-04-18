@@ -1,0 +1,52 @@
+import assert from "assert";
+
+console.log("测试 函数/方法")
+
+function mes(i){
+    return `函数/方法  测试用例[${i}]`
+}
+
+// 测试异步函数
+function a() {
+    let b = 1;
+    return b + 1;
+}
+let c = async a();
+assert.equal(c, undefined, mes(1));
+let d = a();
+assert.equal(d, 2, mes(2));
+
+
+// 同步函数
+function bb() {
+    let b = 1;
+    return b + 1;
+}
+assert.equal(bb(), 2, mes(3));
+
+
+// 测试箭头函数
+function cc(f) {
+    return f(1) + 1;
+}
+assert.equal(cc((c) => {
+    return 1 + c;
+}), 3, mes(4));
+
+
+// sync
+let k = 0;
+let thread = new ThreadPool(30)
+
+function dd() {
+    k++;
+}
+
+for (let i = 0; i < 1000; i++) {
+    thread.submit(() => {
+        sync dd();
+    });
+}
+thread.wait();
+assert.ok(k == 1000);
+

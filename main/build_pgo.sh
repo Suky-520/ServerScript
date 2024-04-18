@@ -1,0 +1,1 @@
+CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -pgo=./test/cpu.prof -o build/mac-arm64 main.go
